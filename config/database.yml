@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  
+
+development:
+  <<: *default
+  database: capytravel_development
+  username: capytravel_db_admin
+  password: capytravel-db-pas
+  host: localhost
+
+test:
+  <<: *default
+  database: capytravel_test
+
+
