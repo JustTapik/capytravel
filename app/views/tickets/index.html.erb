@@ -1,0 +1,12 @@
+<h1>Список билетов</h1>
+
+<% @tickets.each do |ticket| %>
+  <h2><%= ticket.name %></h2>
+  <p><%= ticket.description %></p>
+  <p><strong>Цена:</strong> <%= ticket.price %></p>
+  <p><%= link_to 'Подробнее', ticket %></p>
+<% end %>
+
+<% if user_signed_in? %>
+  <p><%= link_to 'Добавить билет', new_ticket_path %></p>
+<% end %>

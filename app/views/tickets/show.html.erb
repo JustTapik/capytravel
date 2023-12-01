@@ -1,0 +1,13 @@
+<h1><%= @ticket.name %></h1>
+
+<p><%= @ticket.description %></p>
+<p><strong>Цена:</strong> <%= @ticket.price %></p>
+
+<% if user_signed_in? %>
+  <p><%= link_to 'Редактировать', edit_ticket_path(@ticket) %></p>
+  <%= button_to "Удалить", ticket_path(@ticket), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+<% else %>
+  <% if user_signed_in? %>
+  <% else %>
+  <% end %>
+<% end %>
