@@ -1,13 +1,11 @@
-<h1><%= @ticket.name %></h1>
+<%= render @ticket %>
 
-<p><%= @ticket.description %></p>
-<p><strong>Цена:</strong> <%= @ticket.price %></p>
-
-<% if user_signed_in? %>
-  <p><%= link_to 'Редактировать', edit_ticket_path(@ticket) %></p>
-  <%= button_to "Удалить", ticket_path(@ticket), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
-<% else %>
-  <% if user_signed_in? %>
+<div>
+  <% if @user_buy_current_ticket %>
+    <%= link_to "Отменить бронь", tickets_users_cancel_path(@ticket) %> |
   <% else %>
-  <% end %>
+    <%= link_to "Купить", tickets_users_buy_path(@ticket) %> |
 <% end %>
+  <%= link_to "Вернуться ко всем билетам", tickets_path %>
+
+</div>

@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root "home#index"
-  get "user" => "home#user"
-  authenticated :user do
-    root 'home#user', as: :authenticated_root
-  end
-
-  unauthenticated :user do
-    root 'home#index', as: :unauthenticated_root
-  end
-
+  get 'admin', to: 'admin#index', as: :admin_page
+  get 'tickets_users/buy/:id', to: 'tickets_users#buy', as: :tickets_users_buy
+  get 'tickets_users/cancel/:id', to: 'tickets_users#cancel', as: :tickets_users_cancel
   resources :tickets
+  root 'home#index'
+  get 'dashboard', to: 'home#dashboard', as: 'dashboard'
+
+  get 'home/profile', to: 'home#profile', as: :profile
+  get 'home/index'
+  get 'home/dashboard'
+  devise_for :users
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

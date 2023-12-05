@@ -1,0 +1,29 @@
+<div class="profile">
+
+  <%= link_to 'Главная', tickets_path %>
+
+  <h1>Мой профиль</h1>
+
+  <p>
+    <strong>ФИО:</strong>
+    <%= @current_user.first_name %> <%= @current_user.last_name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @current_user.email %>
+  </p>
+
+  <%= button_to "Выход", destroy_user_session_path, id: current_user.id, method: :delete, class:"delete" %>
+
+  <h2>Мои забронированные билеты</h2>
+
+  <div id="tickets">
+    <% @tickets.each do |ticket| %>
+      <%= render ticket %>
+      <p>
+        <%= link_to "Подробнее", ticket %>
+      </p>
+    <% end %>
+  </div>
+</div>

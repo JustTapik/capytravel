@@ -1,12 +1,13 @@
-<h1>Список билетов</h1>
+<%= link_to 'Мой профиль', profile_path %>
+<%= link_to 'Админ', :admin_page %>
 
-<% @tickets.each do |ticket| %>
-  <h2><%= ticket.name %></h2>
-  <p><%= ticket.description %></p>
-  <p><strong>Цена:</strong> <%= ticket.price %></p>
-  <p><%= link_to 'Подробнее', ticket %></p>
-<% end %>
+<h1>Все билеты</h1>
 
-<% if user_signed_in? %>
-  <p><%= link_to 'Добавить билет', new_ticket_path %></p>
-<% end %>
+<div id="tickets">
+  <% @tickets.each do |ticket| %>
+    <%= render ticket %>
+    <p>
+      <%= link_to "Подробнее", ticket %>
+    </p>
+  <% end %>
+</div>

@@ -38,3 +38,5 @@ group :test do
 end
 
 gem "tzinfo-data"
+
+gem "pundit", "~> 2.3"

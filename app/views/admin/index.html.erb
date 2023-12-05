@@ -1,0 +1,18 @@
+<%= link_to 'Главная', tickets_path %>
+
+<h1>Админ</h1>
+
+<%= link_to 'Новый билет', new_ticket_path %>
+
+<h1>Все билеты</h1>
+
+<div id="tickets">
+  <% @tickets.each do |ticket| %>
+    <%= render ticket %>
+    <p>
+      <%= link_to "Подробнее", ticket %>
+      <%= link_to "Редактировать", edit_ticket_path(ticket) %>
+      <%= button_to "Удалить билет", ticket, method: :delete %>
+    </p>
+  <% end %>
+</div>
